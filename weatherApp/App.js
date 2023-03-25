@@ -1,26 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Image, TextInput} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import coatIcon from './assets/Icons/WeatherApp Icons/Coat.png';
-import moonIcon from './assets/Icons/Moon.png';
-import meltedFaceIcon from './assets/Icons/WeatherApp Icons/Melted Face.png';
-import mittensIcon from './assets/Icons/WeatherApp Icons/Mittens.png';
-import scarfIcon from './assets/Icons/WeatherApp Icons/Scarf.png';
-import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
-import sunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
-import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
-import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
+// import CoatIcon from './assets/Icons/WeatherApp Icons/CoatIcon.png';
+// import moonIcon from './assets/Icons/Moon.png';
+import HotIcon from './assets/Icons/WeatherApp Icons/HotIcon.png';
+import SnowIcon from './assets/Icons/WeatherApp Icons/SnowIcon.png';
+import ColdIcon from './assets/Icons/WeatherApp Icons/ColdIcon.png';
+// import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
+import SunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
+import MildIcon from './assets/Icons/WeatherApp Icons/MildIcon.png';
+import UmbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
 
 const chooseOutfit = (temperature) => {
-  if (temperature <= 0) return <img style = {styles.SnowIcon} src = {SnowICon} />;
-  else if (temperature > 7 || temperature <=14) return <img style = {styles.ColdICon} src = {ColdICon} />;
-  else if (temperature > 14 || temperature <=21 ) return <img style = {styles.MildICon} src = {MildICon} />;
-  else if (temperature > 21 || temperature <= 29) return <img style = {styles.WarmICon} src = {WarmICon} />;
-  else if (temperature > 29) return <img style = {styles.HotIcon} src = {HotIcon} />;
+  if (temperature <= 0) return <img style = {styles.SnowIcon} src = {SnowIcon} />;
+  else if (temperature > 7 || temperature <=14) return <img style = {styles.ColdIcon} src = {ColdIcon} />;
+  else if (temperature > 14 || temperature <=21 ) return <img style = {styles.MildIcon} src = {MildIcon} />;
+  else if (temperature > 21 || temperature <= 29) return <img style = {styles.WarmIcon} src = {WarmIcon} />;
+  else if (temperature > 29) return <img style = {styles.HotIcon} src = {HotIcon} />
 } 
 
 const chooseAccessories = (precipitation) => {
-  if (precipitation <= 50) return <img style = {styles.SunglassesICon} src = {SunglassesICon} />;
+  if (precipitation <= 50) return <img style = {styles.SunglassesIcon} src = {SunglassesIcon} />;
   else return <img style = {styles.UmbrellaIcon} src = {UmbrellaIcon} />;
 } 
 
