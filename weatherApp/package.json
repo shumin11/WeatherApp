@@ -9,13 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~48.0.9",
+    "expo": "^48.0.9",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "0.71.4",
     "react-native-select-dropdown": "^3.3.2",
-    "react-native-web": "~0.18.11"
+    "react-native-web": "~0.18.11",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

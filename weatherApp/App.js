@@ -73,10 +73,16 @@ export default function App() {
     else return <img style = {styles.UmbrellaIcon} src = {UmbrellaIcon} />;
   }
 
+  const chooseDayNight = (time) => {
+  if (time >= 0700 && time < 1859) return daySky;
+  else if (time >= 1900 && time < 0659) return nightSky;
+  }
+
   return (
 
     <View style={styles.container}>
-    <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
+    <img style = {styles.moonIcon} src = {chooseDayNight(time)} />
+    <Text style = {styles.locationText}> {"current time"} </Text>
 
     <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax + "\%"} </Text>
   
