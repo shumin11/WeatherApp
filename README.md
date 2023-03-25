@@ -1,1 +1,2 @@
 # WeatherApp
+expo start --web
