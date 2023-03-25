@@ -94,9 +94,10 @@ export default function App() {
 
   const chooseDayNight = (time) => {
   time = time.split(":")[0];
-  if (Number(time) >= 7 && Number(time) < 18) return SunIcon;
+  if (Number(time) >= 6 && Number(time) < 18) return SunIcon;
   else if (Number(time) >= 18 && Number(time) < 6) return MoonIcon;
   }
+  
 
   return (
     <View style={styles.container}>
