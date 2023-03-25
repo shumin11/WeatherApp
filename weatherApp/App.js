@@ -11,6 +11,9 @@ import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
 import sunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
 import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
 import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
+import daySky from './assets/Icons/DaySky.jpeg';
+import nightSky from './assets/Icons/NightSky.png';
+
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
 
@@ -53,12 +56,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-    <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
-
-    <Text style = {styles.locationText}> {currentTemperature + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
-    <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} />
-    <img style = {styles.tShirtLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
-    <img style = {styles.sunglassesLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} />
+    <img style = {styles.dayNightIcon} src = {require('./assets/Icons/Moon.png')} />
+    <Text style = {styles.whiteSpace}> {" "} </Text>
+    <Text style = {styles.locationText}> {"Current Temperature: " + currentTemperature + "C"} </Text>
+    <Text style = {styles.whiteSpace}> {" "} </Text>
+    <Text style = {styles.locationText}> {"Chance of Rain: " + dailyPrecipitationProbabilityMax} </Text>
+    <Text style = {styles.whiteSpace}> {" "} </Text>
+    <img style = {styles.weatherLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} />
+    <Text style = {styles.whiteSpace}> {" "} </Text>
+    <img style = {styles.weatherLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
+    <Text style = {styles.whiteSpace}> {" "} </Text>
+    <img style = {styles.weatherLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} />
 
    <View style={{flexDirection: 'row', alignItems: 'center'}}>
    <Text style = {styles.locationText}>Location:  </Text>
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
   },
   locationText: { 
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: '600',
     color: '#333',
   },
@@ -107,20 +115,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  moonIcon: {
-    width: 80,
-    height: 80,
+  dayNightIcon: {
+    width: 90,
+    height: 90,
   },
-  umbrellaLogo: {
-    width: 50,
-    height: 50,
+  weatherLogo: {
+    width: 60,
+    height: 60,
   },
-  tShirtLogo: {
-    width: 50,
-    height: 50,
-  },
-  sunglassesLogo: {
-    width: 50,
-    height: 50,
+  whiteSpace: {
+  width: 25,
+  height: 25,
   }
 });
