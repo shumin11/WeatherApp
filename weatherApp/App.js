@@ -99,20 +99,20 @@ export default function App() {
     <View style={styles.container}>
 
     <Text style = {styles.locationText}> {date} {currTime} </Text>
-    <Text style = {styles.whiteSpace}> {" "} </Text>
+    
 
-    <img style = {styles.moonIcon} src = {chooseDayNight(currTime)} />
-    <Text style = {styles.whiteSpace}> {" "} </Text>
+    <Image style = {styles.moonIcon} source = {chooseDayNight(currTime)} />
+   
  
 
     <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      "+ "Rain: " + dailyPrecipitationProbabilityMax + "\%"} </Text>
-    <Text style = {styles.whiteSpace}> {" "} </Text>
+    
   
-    <img style = {styles.umbrellaLogo} src = {chooseOutfit(currentTemperature)} />
+    <Image style = {styles.umbrellaLogo} source = {chooseOutfit(currentTemperature)} />
+    
+    <Image style = {styles.umbrellaLogo} source = {chooseAccessories(dailyPrecipitationProbabilityMax)} />
     <Text style = {styles.whiteSpace}> {" "} </Text>
-    <img style = {styles.umbrellaLogo} src = {chooseAccessories(dailyPrecipitationProbabilityMax)} />
-    <Text style = {styles.whiteSpace}> {" "} </Text>
-    <Text style = {styles.whiteSpace}> {" "} </Text>
+   
 
 
    <View style={{flexDirection: 'row', alignItems: 'center'}}>
