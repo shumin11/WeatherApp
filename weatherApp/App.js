@@ -13,7 +13,8 @@ import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
 import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
-
+let date = "";
+let currTime = "";
 
 export default function App() {
   // weatherData holds the weather data of the current location
@@ -21,11 +22,23 @@ export default function App() {
   // const [weatherData, processWeatherData] = useState(0); // initialize to 0 degrees 
   const [currentTemperature, setCurrentTemperature] = useState(""); // initialize to empty string
   const [dailyPrecipitationProbabilityMax, setDailyPrecipitationProbabilityMax] = useState("");
-  const WeatherURL = "https://api.open-meteo.com/v1/forecast?latitude=49.25&longitude=-123.12&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max&current_weather=true&timezone=America%2FLos_Angeles";
+  const VancouverWeatherURL = "https://api.open-meteo.com/v1/forecast?latitude=49.25&longitude=-123.12&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max&current_weather=true&timezone=America%2FLos_Angeles";
   const [hourlyTemperatures, setHourlyTemperatures] = useState([]);
+  const BeijingWeatherURL = "https://api.open-meteo.com/v1/forecast?latitude=39.91&longitude=116.40&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,snowfall,snow_depth&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max&current_weather=true&timezone=Asia%2FTokyo";
+  const YukonWeatherURL = "https://api.open-meteo.com/v1/forecast?latitude=60.72&longitude=-135.05&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,snowfall,snow_depth&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max&current_weather=true&timezone=America%2FLos_Angeles";
 
-  const getweatherDataFromApi = () => {
-    fetch(WeatherURL)
+  let currentCity = "Vancouver";
+
+  const getWeatherDataFromApi = () => {
+    let weatherURL;
+    if (currentCity === "Vancouver") {
+        weatherURL = VancouverWeatherURL;
+      } else if (currentCity === "Beijing") {
+        weatherURL = BeijingWeatherURL;
+      } else if (currentCity === "Yukon") {
+        weatherURL = YukonWeatherURL;
+      }
+    fetch(weatherURL)
     .then(response => {
       if (!response.ok) {
         throw response; // check the http response code and if isn't ok then throw the response as an error
@@ -37,6 +50,9 @@ export default function App() {
       setCurrentTemperature(result.current_weather.temperature);
       setDailyPrecipitationProbabilityMax(result.daily.precipitation_probability_max[0] + "\%");
       setHourlyTemperatures(result.hourly.apparent_temperature.slice(0, 7));
+      let time = result.current_weather.time;
+      date = time.split("T")[0];
+      currTime = time.split("T")[1];
     }).catch((errorResponse) => {
       if (errorResponse.text) {
         errorResponse.text().then (errorMessage => {
@@ -49,7 +65,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    getweatherDataFromApi();
+    getWeatherDataFromApi();
   }, [])
 
   const chooseOutfit = ((temperature) => {
@@ -69,8 +85,9 @@ export default function App() {
   }
 
   return (
-
     <View style={styles.container}>
+      <Text style = {styles.locationText}> {date} {currTime} </Text>
+
     <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
 
     <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
@@ -94,6 +111,8 @@ export default function App() {
 	data={cities}
 	onSelect={(selectedItem, index) => {
 		console.log(selectedItem, index)
+    currentCity = cities[index];
+	  getWeatherDataFromApi();
 	}}
 	buttonTextAfterSelection={(selectedItem, index) => {
 		// text represented after item is selected
