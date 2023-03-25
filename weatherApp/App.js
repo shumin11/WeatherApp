@@ -11,6 +11,8 @@ import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
 import sunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
 import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
 import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
+import daySky from './assets/Icons/DaySky.jpeg';
+import nightSky from './assets/Icons/NightSky.png';
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
 
@@ -68,12 +70,18 @@ export default function App() {
     else return <img style = {styles.UmbrellaIcon} src = {UmbrellaIcon} />;
   }
 
+  const chooseDayNight = (time) => {
+  if (time >= 0700 && time < 1859) return daySky;
+  else if (time >= 1900 && time < 0659) return nightSky;
+  }
+
   return (
 
     <View style={styles.container}>
     <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
 
-    <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
+    <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "  " + "Chance of Rain: " +
+    dailyPrecipitationProbabilityMax} </Text>
     {/* <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} /> */}
     {/* <img style = {styles.umbrellaLogo} src = {umbrellaIcon} />
     <img style = {styles.tShirtLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
