@@ -17,14 +17,16 @@ import WarmIcon from './assets/Icons/WeatherAppIcons/RunningShirt.png';
 
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
-let date = "";
-let currTime = "";
+// let date;
+// let currTime;
 
 export default function App() {
   // weatherData holds the weather data of the current location
   // processWeatherData is a function that updates weatherData
   // const [weatherData, processWeatherData] = useState(0); // initialize to 0 degrees 
   const [currentTemperature, setCurrentTemperature] = useState(""); // initialize to empty string
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [dailyPrecipitationProbabilityMax, setDailyPrecipitationProbabilityMax] = useState("");
   const VancouverWeatherURL = "https://api.open-meteo.com/v1/forecast?latitude=49.25&longitude=-123.12&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max&current_weather=true&timezone=America%2FLos_Angeles";
   const [hourlyTemperatures, setHourlyTemperatures] = useState([]);
@@ -55,8 +57,9 @@ export default function App() {
       setDailyPrecipitationProbabilityMax(result.daily.precipitation_probability_max[0]);
       setHourlyTemperatures(result.hourly.apparent_temperature.slice(0, 7));
       let time = result.current_weather.time;
-      date = time.split("T")[0];
-      currTime = time.split("T")[1];
+      setDate(time.split("T")[0]);
+      setTime(time.split("T")[1]);
+      // currTime = time.split("T")[1];
     }).catch((errorResponse) => {
       if (errorResponse.text) {
         errorResponse.text().then (errorMessage => {
@@ -98,10 +101,10 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-    <Text style = {styles.locationText}> {date} {currTime} </Text>
+    <Text style = {styles.locationText}> {date} {time} </Text>
     
 
-    <Image style = {styles.moonIcon} source = {chooseDayNight(currTime)} />
+    <Image style = {styles.moonIcon} source = {chooseDayNight(time)} />
    
  
 
@@ -173,16 +176,16 @@ const styles = StyleSheet.create({
     height: 80,
   },
   umbrellaLogo: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
   },
   tShirtLogo: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
   },
   sunglassesLogo: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
   },
   dropdown: {
     maxHeight: 100,
