@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput} from 'react-native';
 import React, {useState, useEffect} from 'react';
+
 
 export default function App() {
   // weatherData holds the weather data of the current location
@@ -34,7 +35,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text style = {styles.locationText}>Location</Text>
+      <TextInput style = {styles.input} />
       <StatusBar style="auto" />
     </View>
   );
@@ -43,8 +45,22 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#5372F0',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  locationText: { 
+    textAlign: 'center',
+    fontSize: 32,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 20
+  },
+  input: {
+    backgroundColor: "white",
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  }
 });
