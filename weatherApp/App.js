@@ -64,6 +64,9 @@ export default function App() {
    <Text style = {styles.locationText}>Location:  </Text>
    {/* <TextInput style = {styles.input} /> */}
    <SelectDropdown
+   dropdownStyle={styles.dropdown}
+   buttonStyle = {styles.button}
+   defaultButtonText = 'select a city'
 	data={cities}
 	onSelect={(selectedItem, index) => {
 		console.log(selectedItem, index)
@@ -78,6 +81,7 @@ export default function App() {
 		// if data array is an array of objects then return item.property to represent item in dropdown
 		return item
 	}}
+
 />
 
   </View>
@@ -122,5 +126,20 @@ const styles = StyleSheet.create({
   sunglassesLogo: {
     width: 50,
     height: 50,
+  },
+  dropdown: {
+    maxHeight: 100,
+    color: '#FFFFFF',
+    backgroundColor: '#DBE4C6'
+  },
+  button: {
+    width: 200,
+    backgroundColor: '#DBE4C6',
+    borderRadius: 20
+  },
+  buttonText: {
+    fontFamily: 'helvetica',
+    fontWeight: 'bold',
+    fontSize: 15
   }
 });
