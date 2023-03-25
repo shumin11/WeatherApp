@@ -140,6 +140,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: 'helvetica',
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 20
   }
 });
