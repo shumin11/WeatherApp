@@ -50,7 +50,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-    <img style = {styles.timeLogo} src = {require('./assets/Icons/Moon.png')} />
+    <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
 
     <Text style = {styles.locationText}> {currentTemperature + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
     <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} />
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  timeLogo: {
+  moonIcon: {
     width: 80,
     height: 80,
   },
