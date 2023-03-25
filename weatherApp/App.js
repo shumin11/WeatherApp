@@ -12,7 +12,7 @@ import sunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
 import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
 import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
 
-const countries = ["Vancouver", "Beijing", "Yukon"]
+const cities = ["Vancouver", "Beijing", "Yukon"]
 
 export default function App() {
   // weatherData holds the weather data of the current location
@@ -61,10 +61,10 @@ export default function App() {
     <img style = {styles.sunglassesLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} />
 
    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-   <Text style = {styles.locationText}>Location:</Text>
+   <Text style = {styles.locationText}>Location:  </Text>
    {/* <TextInput style = {styles.input} /> */}
    <SelectDropdown
-	data={countries}
+	data={cities}
 	onSelect={(selectedItem, index) => {
 		console.log(selectedItem, index)
 	}}
