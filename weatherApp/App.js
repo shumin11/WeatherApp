@@ -42,10 +42,20 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-    <img style={styles.umbrellaIcon}
-    source={require{uri:'./assets/Icons/WeatherApp Icons/umbrella.png'}}/>
 
-      <Text>Open up App.js to start working on your app!</Text>
+
+      <img style = {styles.timeLogo} src = {require('./assets/Icons/night.png')} />
+
+      <Text style = {styles.locationText}>18°C     Rain</Text>
+
+
+     <View style={{flexDirection: 'row', alignItems: 'center'}}>
+     <Text style = {styles.locationText}>Location:</Text>
+     <TextInput style = {styles.input} />
+    </View>
+    
+    
+
       <StatusBar style="auto" />
     </View>
   );
@@ -91,4 +101,25 @@ const styles = StyleSheet.create({
       height: 50,
       },
 
+    backgroundColor: 'powderblue',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  locationText: { 
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: '600',
+    color: '#333',
+  },
+  input: {
+    backgroundColor: "white",
+    height: 30,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  timeLogo: {
+    width: 80,
+    height: 80,
+  }
 });
