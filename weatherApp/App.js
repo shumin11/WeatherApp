@@ -75,8 +75,8 @@ export default function App() {
   const chooseOutfit = ((temperature) => {
     console.log(temperature);
     if (temperature <= 0) return SnowIcon;
-    else if (temperature > 0 && temperature <=7) return ColdIcon;
-    else if (temperature > 7 && temperature <=14) return ChillIcon;
+    else if (temperature > 0 && temperature <=7) return ChillIcon;
+    else if (temperature > 7 && temperature <=14) return ColdIcon;
     else if (temperature > 14 && temperature <=21 ) return MildIcon;
     else if (temperature > 21 && temperature <= 29) return WarmIcon;
     else if (temperature > 29) return HotIcon;
@@ -105,7 +105,7 @@ export default function App() {
     <Text style = {styles.whiteSpace}> {" "} </Text>
  
 
-    <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax + "\%"} </Text>
+    <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      "+ "Rain: " + dailyPrecipitationProbabilityMax + "\%"} </Text>
     <Text style = {styles.whiteSpace}> {" "} </Text>
   
     <img style = {styles.umbrellaLogo} src = {chooseOutfit(currentTemperature)} />
@@ -173,16 +173,16 @@ const styles = StyleSheet.create({
     height: 80,
   },
   umbrellaLogo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
   tShirtLogo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
   sunglassesLogo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
   dropdown: {
     maxHeight: 100,
