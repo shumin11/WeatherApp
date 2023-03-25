@@ -1,7 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { StyleSheet, Text, View , Image } from 'react-native';
 import React, {useState, useEffect} from 'react';
-
+import coatIcon from './assets/Icons/WeatherApp Icons/Coat.png';
+import meltedFaceIcon from './assets/Icons/WeatherApp Icons/Melted Face.png';
+import mittensIcon from './assets/Icons/WeatherApp Icons/Mittens.png';
+import scarfIcon from './assets/Icons/WeatherApp Icons/Scarf.png';
+import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
+import sunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
+import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
+import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
 
 export default function App() {
   // weatherData holds the weather data of the current location
@@ -35,8 +42,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style = {styles.locationText}>Location</Text>
-      <TextInput style = {styles.input} />
+    <img style={styles.umbrellaIcon}
+    source={require{uri:'./assets/Icons/WeatherApp Icons/umbrella.png'}}/>
+
+      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -45,22 +54,41 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#5372F0',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  locationText: { 
-    textAlign: 'center',
-    fontSize: 32,
-    fontWeight: '600',
-    color: '#333',
-    marginBottom: 20
+  coatIcon: {
+  width: 50,
+  height: 50,
   },
-  input: {
-    backgroundColor: "white",
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  }
+  meltedFaceIcon: {
+  width: 50,
+    height: 50,
+    },
+    mittensIcon: {
+    width: 50,
+    height: 50,
+    },
+    scarfIcon: {
+    width: 50,
+      height: 50,
+      },
+    smileyFaceIcon: {
+    width: 50,
+      height: 50,
+      },
+    sunglassesIcon: {
+    width: 50,
+      height: 50,
+      },
+    tShirtIcon: {
+    width: 50,
+      height: 50,
+      },
+    umbrellaIcon: {
+    width: 50,
+      height: 50,
+      },
+
 });
