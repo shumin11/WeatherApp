@@ -2,15 +2,19 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Image, TextInput} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import SelectDropdown from 'react-native-select-dropdown'
-import coatIcon from './assets/Icons/WeatherApp Icons/Coat.png';
+
+import UmbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
+import SunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
+
+import ChillIcon from './assets/Icons/WeatherApp Icons/Coat.png';
 import moonIcon from './assets/Icons/Moon.png';
-import meltedFaceIcon from './assets/Icons/WeatherApp Icons/Melted Face.png';
-import mittensIcon from './assets/Icons/WeatherApp Icons/Mittens.png';
-import scarfIcon from './assets/Icons/WeatherApp Icons/Scarf.png';
+import HotIcon from './assets/Icons/WeatherApp Icons/Melted Face.png';
+import SnowIcon from './assets/Icons/WeatherApp Icons/Mittens.png';
+import ColdIcon from './assets/Icons/WeatherApp Icons/Scarf.png';
 import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
-import sunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
-import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
-import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
+import MildIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
+import WarmIcon from './assets/Icons/WeatherApp Icons/RunningShirt.png';
+
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
 
@@ -35,7 +39,7 @@ export default function App() {
       console.log(result)
       // processWeatherData(result.content)
       setCurrentTemperature(result.current_weather.temperature);
-      setDailyPrecipitationProbabilityMax(result.daily.precipitation_probability_max[0] + "\%");
+      setDailyPrecipitationProbabilityMax(result.daily.precipitation_probability_max[0]);
       setHourlyTemperatures(result.hourly.apparent_temperature.slice(0, 7));
     }).catch((errorResponse) => {
       if (errorResponse.text) {
@@ -54,11 +58,12 @@ export default function App() {
 
   const chooseOutfit = ((temperature) => {
     console.log(temperature);
-    if (temperature <= 7) return umbrellaIcon;
-    else if (temperature > 7 && temperature <=14) return umbrellaIcon;
-    else if (temperature > 14 && temperature <=21 ) return umbrellaIcon;
-    else if (temperature > 21 && temperature <= 29) return umbrellaIcon;
-    else if (temperature > 29) return umbrellaIcon;
+    if (temperature <= 0) return SnowIcon;
+    else if (temperature > 0 && temperature <=7) return ColdIcon;
+    else if (temperature > 7 && temperature <=14) return ChillIcon;
+    else if (temperature > 14 && temperature <=21 ) return MildIcon;
+    else if (temperature > 21 && temperature <= 29) return WarmIcon;
+    else if (temperature > 29) return HotIcon;
   }) 
   
   console.log(chooseOutfit(currentTemperature));
@@ -73,16 +78,11 @@ export default function App() {
     <View style={styles.container}>
     <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
 
-    <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
-    {/* <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} /> */}
-    {/* <img style = {styles.umbrellaLogo} src = {umbrellaIcon} />
-    <img style = {styles.tShirtLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
-    <img style = {styles.sunglassesLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} /> */}
+    <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax + "\%"} </Text>
   
-    {currentTemperature && <img style = {styles.umbrellaLogo} src = {chooseOutfit(currentTemperature)} />}
+    <img style = {styles.umbrellaLogo} src = {chooseOutfit(currentTemperature)} />
+    <img style = {styles.umbrellaLogo} src = {chooseAccessories(dailyPrecipitationProbabilityMax)} />
 
-    {/* chooseOutfit(currentTemperature);
-    chooseAccessories(dailyPrecipitationProbabilityMax); */}
 
    <View style={{flexDirection: 'row', alignItems: 'center'}}>
    <Text style = {styles.locationText}>Location:  </Text>
