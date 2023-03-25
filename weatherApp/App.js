@@ -78,7 +78,8 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-    <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
+    <img style = {styles.moonIcon} src = {chooseDayNight(time)} />
+    <Text style = {styles.locationText}> {"current time"} </Text>
 
     <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "  " + "Chance of Rain: " +
     dailyPrecipitationProbabilityMax} </Text>
