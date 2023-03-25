@@ -35,8 +35,18 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style = {styles.locationText}>Location</Text>
-      <TextInput style = {styles.input} />
+      <img style = {styles.timeLogo} src = {require('./assets/Icons/night.png')} />
+
+      <Text style = {styles.locationText}>18°C     Rain</Text>
+
+
+     <View style={{flexDirection: 'row', alignItems: 'center'}}>
+     <Text style = {styles.locationText}>Location:</Text>
+     <TextInput style = {styles.input} />
+    </View>
+    
+    
+
       <StatusBar style="auto" />
     </View>
   );
@@ -45,22 +55,25 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#5372F0',
+    backgroundColor: 'powderblue',
     alignItems: 'center',
     justifyContent: 'center',
   },
   locationText: { 
     textAlign: 'center',
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: '600',
     color: '#333',
-    marginBottom: 20
   },
   input: {
     backgroundColor: "white",
-    height: 40,
+    height: 30,
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+  timeLogo: {
+    width: 80,
+    height: 80,
   }
 });
