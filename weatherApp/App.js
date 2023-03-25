@@ -14,6 +14,7 @@ import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
 
+
 export default function App() {
   // weatherData holds the weather data of the current location
   // processWeatherData is a function that updates weatherData
@@ -33,7 +34,7 @@ export default function App() {
     }).then(result => {
       console.log(result)
       // processWeatherData(result.content)
-      setCurrentTemperature(result.current_weather.temperature + "\u00B0");
+      setCurrentTemperature(result.current_weather.temperature);
       setDailyPrecipitationProbabilityMax(result.daily.precipitation_probability_max[0] + "\%");
       setHourlyTemperatures(result.hourly.apparent_temperature.slice(0, 7));
     }).catch((errorResponse) => {
@@ -51,14 +52,37 @@ export default function App() {
     getweatherDataFromApi();
   }, [])
 
+  const chooseOutfit = ((temperature) => {
+    console.log(temperature);
+    if (temperature <= 7) return umbrellaIcon;
+    else if (temperature > 7 && temperature <=14) return umbrellaIcon;
+    else if (temperature > 14 && temperature <=21 ) return umbrellaIcon;
+    else if (temperature > 21 && temperature <= 29) return umbrellaIcon;
+    else if (temperature > 29) return umbrellaIcon;
+  }) 
+  
+  console.log(chooseOutfit(currentTemperature));
+
+  const chooseAccessories = (precipitation) => {
+    if (precipitation <= 50) return <img style = {styles.SunglassesIcon} src = {SunglassesIcon} />;
+    else return <img style = {styles.UmbrellaIcon} src = {UmbrellaIcon} />;
+  }
+
   return (
+
     <View style={styles.container}>
     <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
 
-    <Text style = {styles.locationText}> {currentTemperature + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
-    <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} />
+    <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
+    {/* <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} /> */}
+    {/* <img style = {styles.umbrellaLogo} src = {umbrellaIcon} />
     <img style = {styles.tShirtLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
-    <img style = {styles.sunglassesLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} />
+    <img style = {styles.sunglassesLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} /> */}
+  
+    {currentTemperature && <img style = {styles.umbrellaLogo} src = {chooseOutfit(currentTemperature)} />}
+
+    {/* chooseOutfit(currentTemperature);
+    chooseAccessories(dailyPrecipitationProbabilityMax); */}
 
    <View style={{flexDirection: 'row', alignItems: 'center'}}>
    <Text style = {styles.locationText}>Location:  </Text>
@@ -140,6 +164,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: 'helvetica',
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 20
   }
 });
