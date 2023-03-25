@@ -11,9 +11,6 @@ import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
 import sunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
 import tShirtIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
 import umbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
-import daySky from './assets/Icons/DaySky.jpeg';
-import nightSky from './assets/Icons/NightSky.png';
-
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
 
@@ -56,22 +53,20 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-    <img style = {styles.dayNightIcon} src = {require('./assets/Icons/Moon.png')} />
-    <Text style = {styles.whiteSpace}> {" "} </Text>
-    <Text style = {styles.locationText}> {"Current Temperature: " + currentTemperature + "C"} </Text>
-    <Text style = {styles.whiteSpace}> {" "} </Text>
-    <Text style = {styles.locationText}> {"Chance of Rain: " + dailyPrecipitationProbabilityMax} </Text>
-    <Text style = {styles.whiteSpace}> {" "} </Text>
-    <img style = {styles.weatherLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} />
-    <Text style = {styles.whiteSpace}> {" "} </Text>
-    <img style = {styles.weatherLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
-    <Text style = {styles.whiteSpace}> {" "} </Text>
-    <img style = {styles.weatherLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} />
+    <img style = {styles.moonIcon} src = {require('./assets/Icons/Moon.png')} />
+
+    <Text style = {styles.locationText}> {currentTemperature + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
+    <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} />
+    <img style = {styles.tShirtLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
+    <img style = {styles.sunglassesLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} />
 
    <View style={{flexDirection: 'row', alignItems: 'center'}}>
    <Text style = {styles.locationText}>Location:  </Text>
    {/* <TextInput style = {styles.input} /> */}
    <SelectDropdown
+   dropdownStyle={styles.dropdown}
+   buttonStyle = {styles.button}
+   defaultButtonText = 'select a city'
 	data={cities}
 	onSelect={(selectedItem, index) => {
 		console.log(selectedItem, index)
@@ -86,6 +81,7 @@ export default function App() {
 		// if data array is an array of objects then return item.property to represent item in dropdown
 		return item
 	}}
+
 />
 
   </View>
@@ -104,7 +100,7 @@ const styles = StyleSheet.create({
   },
   locationText: { 
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: '600',
     color: '#333',
   },
@@ -115,16 +111,35 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  dayNightIcon: {
-    width: 90,
-    height: 90,
+  moonIcon: {
+    width: 80,
+    height: 80,
   },
-  weatherLogo: {
-    width: 60,
-    height: 60,
+  umbrellaLogo: {
+    width: 50,
+    height: 50,
   },
-  whiteSpace: {
-  width: 25,
-  height: 25,
+  tShirtLogo: {
+    width: 50,
+    height: 50,
+  },
+  sunglassesLogo: {
+    width: 50,
+    height: 50,
+  },
+  dropdown: {
+    maxHeight: 100,
+    color: '#FFFFFF',
+    backgroundColor: '#DBE4C6'
+  },
+  button: {
+    width: 200,
+    backgroundColor: '#DBE4C6',
+    borderRadius: 20
+  },
+  buttonText: {
+    fontFamily: 'helvetica',
+    fontWeight: 'bold',
+    fontSize: 15
   }
 });
