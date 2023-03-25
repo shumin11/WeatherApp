@@ -3,17 +3,17 @@ import { StyleSheet, Text, View , Image, TextInput} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import SelectDropdown from 'react-native-select-dropdown'
 
-import UmbrellaIcon from './assets/Icons/WeatherApp Icons/Umbrella.png';
-import SunglassesIcon from './assets/Icons/WeatherApp Icons/Sunglasses.png';
-
-import ChillIcon from './assets/Icons/WeatherApp Icons/Coat.png';
-import moonIcon from './assets/Icons/Moon.png';
-import HotIcon from './assets/Icons/WeatherApp Icons/Melted Face.png';
-import SnowIcon from './assets/Icons/WeatherApp Icons/Mittens.png';
-import ColdIcon from './assets/Icons/WeatherApp Icons/Scarf.png';
-import smileyFaceIcon from './assets/Icons/WeatherApp Icons/Smiling Face.png';
-import MildIcon from './assets/Icons/WeatherApp Icons/TShirt.png';
-import WarmIcon from './assets/Icons/WeatherApp Icons/RunningShirt.png';
+import UmbrellaIcon from './assets/Icons/WeatherAppIcons/Umbrella.png';
+import SunglassesIcon from './assets/Icons/WeatherAppIcons/Sunglasses.png';
+import SunIcon from './assets/Icons/Sun.png'
+import ChillIcon from './assets/Icons/WeatherAppIcons/Coat.png';
+import MoonIcon from './assets/Icons/Moon.png';
+import HotIcon from './assets/Icons/WeatherAppIcons/Melted Face.png';
+import SnowIcon from './assets/Icons/WeatherAppIcons/Mittens.png';
+import ColdIcon from './assets/Icons/WeatherAppIcons/Scarf.png';
+import smileyFaceIcon from './assets/Icons/WeatherAppIcons/Smiling Face.png';
+import MildIcon from './assets/Icons/WeatherAppIcons/TShirt.png';
+import WarmIcon from './assets/Icons/WeatherAppIcons/RunningShirt.png';
 
 
 const cities = ["Vancouver", "Beijing", "Yukon"]
@@ -85,22 +85,23 @@ export default function App() {
   console.log(chooseOutfit(currentTemperature));
 
   const chooseAccessories = (precipitation) => {
-    if (precipitation <= 50) return <img style = {styles.SunglassesIcon} src = {SunglassesIcon} />;
-    else return <img style = {styles.UmbrellaIcon} src = {UmbrellaIcon} />;
+    if (precipitation <= 50) return SunglassesIcon;
+    else return UmbrellaIcon;
   }
 
   const chooseDayNight = (time) => {
-  if (time >= 0700 && time < 1859) return daySky;
-  else if (time >= 1900 && time < 0659) return nightSky;
+  time = time.split(":")[0];
+  if (Number(time) >= 7 && Number(time) < 18) return SunIcon;
+  else if (Number(time) >= 19 && Number(time) < 6) return MoonIcon;
   }
 
   return (
     <View style={styles.container}>
 
-      <Text style = {styles.locationText}> {date} {currTime} </Text>
+    <Text style = {styles.locationText}> {date} {currTime} </Text>
 
-    <img style = {styles.moonIcon} src = {chooseDayNight(time)} />
-    <Text style = {styles.locationText}> {"current time"} </Text>
+    <img style = {styles.moonIcon} src = {chooseDayNight(currTime)} />
+ 
 
     <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax + "\%"} </Text>
   
@@ -180,11 +181,11 @@ const styles = StyleSheet.create({
   dropdown: {
     maxHeight: 100,
     color: '#FFFFFF',
-    backgroundColor: '#DBE4C6'
+    backgroundColor: 'white'
   },
   button: {
     width: 200,
-    backgroundColor: '#DBE4C6',
+    backgroundColor: 'white',
     borderRadius: 20
   },
   buttonText: {
