@@ -99,14 +99,20 @@ export default function App() {
     <View style={styles.container}>
 
     <Text style = {styles.locationText}> {date} {currTime} </Text>
+    <Text style = {styles.whiteSpace}> {" "} </Text>
 
     <img style = {styles.moonIcon} src = {chooseDayNight(currTime)} />
+    <Text style = {styles.whiteSpace}> {" "} </Text>
  
 
     <Text style = {styles.locationText}> {currentTemperature + "\u00B0" + "C" + "      " + dailyPrecipitationProbabilityMax + "\%"} </Text>
+    <Text style = {styles.whiteSpace}> {" "} </Text>
   
     <img style = {styles.umbrellaLogo} src = {chooseOutfit(currentTemperature)} />
+    <Text style = {styles.whiteSpace}> {" "} </Text>
     <img style = {styles.umbrellaLogo} src = {chooseAccessories(dailyPrecipitationProbabilityMax)} />
+    <Text style = {styles.whiteSpace}> {" "} </Text>
+    <Text style = {styles.whiteSpace}> {" "} </Text>
 
 
    <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -192,5 +198,9 @@ const styles = StyleSheet.create({
     fontFamily: 'helvetica',
     fontWeight: 'bold',
     fontSize: 20
-  }
+  },
+  whiteSpace: {
+    width: 25,
+    height: 25,
+    }
 });
