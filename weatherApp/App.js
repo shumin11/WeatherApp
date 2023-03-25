@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Image, TextInput} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import coatIcon from './assets/Icons/WeatherApp Icons/Coat.png';
+import moonIcon from './assets/Icons/Moon.png';
 import meltedFaceIcon from './assets/Icons/WeatherApp Icons/Melted Face.png';
 import mittensIcon from './assets/Icons/WeatherApp Icons/Mittens.png';
 import scarfIcon from './assets/Icons/WeatherApp Icons/Scarf.png';
@@ -20,7 +21,7 @@ export default function App() {
   const [hourlyTemperatures, setHourlyTemperatures] = useState([]);
 
   const getweatherDataFromApi = () => {
-    fetch("https://api.open-meteo.com/v1/forecast?latitude=49.25&longitude=-123.12&hourly=weatherData_2m,precipitation")
+    fetch(WeatherURL)
     .then(response => {
       if (!response.ok) {
         throw response; // check the http response code and if isn't ok then throw the response as an error
@@ -49,10 +50,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-    <img style = {styles.timeLogo} src = {require('./assets/Icons/night.png')} />
+    <img style = {styles.timeLogo} src = {require('./assets/Icons/Moon.png')} />
 
-    <Text style = {styles.locationText}>18°C     Rain</Text>
-    <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/umbrella.png')} />
+    <Text style = {styles.locationText}> {currentTemperature + "C" + "      " + dailyPrecipitationProbabilityMax} </Text>
+    <img style = {styles.umbrellaLogo} src = {require('./assets/Icons/WeatherApp Icons/Umbrella.png')} />
     <img style = {styles.tShirtLogo} src = {require('./assets/Icons/WeatherApp Icons/TShirt.png')} />
     <img style = {styles.sunglassesLogo} src = {require('./assets/Icons/WeatherApp Icons/Sunglasses.png')} />
 
@@ -60,8 +61,6 @@ export default function App() {
    <Text style = {styles.locationText}>Location:</Text>
    <TextInput style = {styles.input} />
   </View>
-  
-  
 
     <StatusBar style="auto" />
   </View>
@@ -71,7 +70,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'powderblue',
+    backgroundColor: '#9FE2BF',
     alignItems: 'center',
     justifyContent: 'center',
   },
