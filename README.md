@@ -1,8 +1,11 @@
 # WeatherApp
 
 
-<video src="LINK = https://drive.google.com/file/d/1MBeKiaDbvR7q7ZblO1yg35ID1Sv_xi8p/view?usp=sharing" controls="controls" style="max-width: 730px;">
-</video>
+
+https://github.com/shumin11/WeatherApp/assets/14068485/7202ef35-f5ef-44dd-9921-40a38d810fb0
+
+
+
 
 - As a user, I am able to select a location and show weather information for the location.
 - As a user, I am able to view the time and date for the location.
